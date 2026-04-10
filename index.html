@@ -683,16 +683,16 @@ function saveConfig(){
   var usr=document.getElementById('cfg-user').value.trim();
   if(!url||!key){toast(t('eIn'));return;}
   if(!url.includes('firebaseio.com')&&!url.includes('firebasedatabase.app')){toast(t('eUrl'));return;}
-  localStorage.setItem('db_url',url);localStorage.setItem('api_key',key);
-  if(usr)localStorage.setItem('user_name',usr);
+  localStorage.setItem('db_url_oceanpark',url);localStorage.setItem('api_key_oceanpark',key);
+  if(usr)localStorage.setItem('user_name_oceanpark',usr);
   DB=url.replace(/\/$/,'');AK=key;uName=usr;
   document.getElementById('cfg-pg').style.display='none';
   document.getElementById('app').style.display='block';
   document.getElementById('bottom-nav').style.display='flex';
   init();
 }
-function resetCfg(){if(!confirm(t('r1')+'\n\n'+t('r2')))return;localStorage.removeItem('db_url');localStorage.removeItem('api_key');location.reload();}
-function saveName(){var n=document.getElementById('se-name').value.trim();if(!n){toast(t('eName'));return;}localStorage.setItem('user_name',n);uName=n;toast(t('nameOk'));}
+function resetCfg(){if(!confirm(t('r1')+'\n\n'+t('r2')))return;localStorage.removeItem('db_url_oceanpark');localStorage.removeItem('api_key_oceanpark');location.reload();}
+function saveName(){var n=document.getElementById('se-name').value.trim();if(!n){toast(t('eName'));return;}localStorage.setItem('user_name_oceanpark',n);uName=n;toast(t('nameOk'));}
 async function init(){
   var d=new Date();
   document.getElementById('hdr-date').textContent=(d.getMonth()+1)+'/'+d.getDate();
@@ -1541,8 +1541,8 @@ function toast(msg){var el=document.getElementById('toast');el.textContent=msg;e
 document.querySelectorAll('.modal-overlay').forEach(function(el){el.addEventListener('click',function(e){if(e.target===el)el.classList.remove('open');});});
 /* BOOT */
 (function(){
-  var url=localStorage.getItem('db_url');var key=localStorage.getItem('api_key');
-  uName=localStorage.getItem('user_name')||'';
+  var url=localStorage.getItem('db_url_oceanpark');var key=localStorage.getItem('api_key_oceanpark');
+  uName=localStorage.getItem('user_name_oceanpark')||'';
   if(url&&key){DB=url.replace(/\/$/,'');AK=key;document.getElementById('app').style.display='block';document.getElementById('bottom-nav').style.display='flex';init();}
   else{document.getElementById('cfg-pg').style.display='flex';document.getElementById('bottom-nav').style.display='none';}
 })();
